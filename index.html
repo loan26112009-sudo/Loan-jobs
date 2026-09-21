@@ -149,16 +149,17 @@
 
     .roles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .role-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+      background: var(--white); border: 1.5px solid var(--border-l); border-radius: 8px;
       padding: 36px 28px 52px; cursor: pointer;
       display: flex; flex-direction: column; gap: 14px;
       min-height: 180px;
+      box-shadow: 0 2px 12px rgba(26,75,255,0.06);
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
       position: relative; overflow: hidden;
     }
     .role-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
     .role-card:hover::after { transform: scaleX(1); }
-    .role-card:hover { border-color: var(--border-l); box-shadow: 0 6px 28px rgba(26,75,255,0.08); transform: translateY(-2px); }
+    .role-card:hover { border-color: var(--blue); box-shadow: 0 6px 28px rgba(26,75,255,0.14); transform: translateY(-2px); }
     .role-card-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--dim); }
     .role-card-name { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--title); line-height: 1.2; }
     .role-card-mode { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; width: fit-content; margin-top: auto; }
