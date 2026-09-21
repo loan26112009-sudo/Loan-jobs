@@ -707,6 +707,8 @@
     function formatTimeAgo(iso) {
       if (!iso) return null;
       const days = (Date.now() - new Date(iso).getTime()) / 86400000;
+      if (days < 1) return "aujourd'hui";
+      if (days < 7) { const d = Math.floor(days); return `il y a ${d} jour${d > 1 ? 's' : ''}`; }
       const years = days / 365.25;
       if (years >= 1) { const y = Math.round(years); return `il y a ${y} an${y > 1 ? 's' : ''}`; }
       const months = days / 30.44;
