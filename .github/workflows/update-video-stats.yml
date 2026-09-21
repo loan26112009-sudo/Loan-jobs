@@ -15,13 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Discover latest videos + live from the channel, fetch stats
+      - name: Discover latest videos + live from the channel, fetch all stats
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           CHANNEL_HANDLE: "@Loaaannn"
         run: |
           python3 - <<'PY'
-          import json, os, urllib.request, urllib.parse, datetime
+          import json, os, re, urllib.request, urllib.parse, datetime
 
           api_key = os.environ.get("YOUTUBE_API_KEY")
           if not api_key:
@@ -34,44 +34,46 @@ jobs:
               with urllib.request.urlopen(url) as resp:
                   return json.load(resp)
 
-          # 1) trouver la playlist des uploads de la chaîne
-          ch = api("channels", part="contentDetails", forHandle=handle)
-          uploads_playlist = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
-
-          # 2) récupérer les dernières vidéos publiées (50 max, pour ne pas rater
-          #    les vidéos longues/lives noyées parmi des Shorts plus récents)
-          items = api("playlistItems", part="contentDetails", playlistId=uploads_playlist, maxResults=50)
-          ids = [it["contentDetails"]["videoId"] for it in items.get("items", [])]
-          if not ids:
-              raise SystemExit("No videos found on channel uploads playlist")
-
-          # 3) détails complets (durée, live ou non, vues, date)
-          details = api("videos", part="snippet,statistics,contentDetails,liveStreamingDetails", id=",".join(ids))
-
           def parse_duration_seconds(iso):
-              import re
               m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
               if not m:
                   return 0
               h, mn, s = (int(x) if x else 0 for x in m.groups())
               return h * 3600 + mn * 60 + s
 
-          videos = []
-          lives = []
-          for item in details.get("items", []):
+          def fetch_details(ids):
+              """videos.list par lots de 50 id, retourne {id: item}"""
+              out = {}
+              for i in range(0, len(ids), 50):
+                  batch = ids[i:i + 50]
+                  data = api("videos", part="snippet,statistics,contentDetails,liveStreamingDetails", id=",".join(batch))
+                  for item in data.get("items", []):
+                      out[item["id"]] = item
+              return out
+
+          # ── 1) GRILLE "Mes travaux" — auto-détection des 2 dernières vidéos
+          #    longues + du dernier live sur la chaîne, Shorts exclus ──
+          ch = api("channels", part="contentDetails", forHandle=handle)
+          uploads_playlist = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+
+          items = api("playlistItems", part="contentDetails", playlistId=uploads_playlist, maxResults=50)
+          recent_ids = [it["contentDetails"]["videoId"] for it in items.get("items", [])]
+          if not recent_ids:
+              raise SystemExit("No videos found on channel uploads playlist")
+
+          recent_details = fetch_details(recent_ids)
+
+          videos, lives = [], []
+          for item in recent_details.values():
               duration_s = parse_duration_seconds(item["contentDetails"].get("duration"))
-              is_short = duration_s > 0 and duration_s <= 60
-              if is_short:
-                  continue  # on exclut totalement les Shorts
+              if duration_s > 0 and duration_s <= 60:
+                  continue  # Shorts exclus de la grille
               entry = {
                   "id": item["id"],
                   "publishedAt": item["snippet"]["publishedAt"],
                   "viewCount": int(item["statistics"].get("viewCount", 0)),
               }
-              if "liveStreamingDetails" in item:
-                  lives.append(entry)
-              else:
-                  videos.append(entry)
+              (lives if "liveStreamingDetails" in item else videos).append(entry)
 
           videos.sort(key=lambda v: v["publishedAt"], reverse=True)
           lives.sort(key=lambda v: v["publishedAt"], reverse=True)
@@ -94,14 +96,54 @@ jobs:
                   "stats": stats_out,
               }, f, indent=2, ensure_ascii=False)
               f.write("\n")
+
+          # ── 2) BANDEAU défilant — liste manuelle (ticker-videos.json),
+          #    Shorts inclus, format détecté automatiquement ──
+          try:
+              with open("ticker-videos.json") as f:
+                  ticker_ids = json.load(f)
+          except FileNotFoundError:
+              ticker_ids = []
+
+          ticker_stats = {}
+          if ticker_ids:
+              # réutilise ce qu'on a déjà pour les ids en commun, sinon refetch
+              missing = [vid for vid in ticker_ids if vid not in recent_details]
+              ticker_details = dict(recent_details)
+              if missing:
+                  ticker_details.update(fetch_details(missing))
+
+              for vid in ticker_ids:
+                  item = ticker_details.get(vid)
+                  if not item:
+                      continue
+                  duration_s = parse_duration_seconds(item["contentDetails"].get("duration"))
+                  if "liveStreamingDetails" in item:
+                      fmt = "live"
+                  elif duration_s > 0 and duration_s <= 60:
+                      fmt = "short"
+                  else:
+                      fmt = "video"
+                  ticker_stats[vid] = {
+                      "viewCount": int(item["statistics"].get("viewCount", 0)),
+                      "publishedAt": item["snippet"]["publishedAt"],
+                      "format": fmt,
+                  }
+
+          with open("ticker-stats.json", "w") as f:
+              json.dump({
+                  "updatedAt": datetime.datetime.utcnow().isoformat() + "Z",
+                  "stats": ticker_stats,
+              }, f, indent=2, ensure_ascii=False)
+              f.write("\n")
           PY
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- videos.json video-stats.json; then
-            git add videos.json video-stats.json
+          if ! git diff --quiet -- videos.json video-stats.json ticker-stats.json; then
+            git add videos.json video-stats.json ticker-stats.json
             git commit -m "Update tracked videos and stats"
             git push
           else
