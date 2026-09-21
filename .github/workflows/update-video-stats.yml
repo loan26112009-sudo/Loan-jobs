@@ -15,44 +15,84 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch stats from YouTube Data API
+      - name: Discover latest videos + live from the channel, fetch stats
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          CHANNEL_HANDLE: "@Loaaannn"
         run: |
           python3 - <<'PY'
-          import json, os, re, urllib.request, urllib.parse, datetime
+          import json, os, urllib.request, urllib.parse, datetime
 
           api_key = os.environ.get("YOUTUBE_API_KEY")
           if not api_key:
               raise SystemExit("YOUTUBE_API_KEY secret is not set")
+          handle = os.environ["CHANNEL_HANDLE"]
 
-          with open("videos.json") as f:
-              videos = json.load(f)
-          ids = [v["id"] for v in videos]
+          def api(path, **params):
+              params["key"] = api_key
+              url = f"https://www.googleapis.com/youtube/v3/{path}?{urllib.parse.urlencode(params)}"
+              with urllib.request.urlopen(url) as resp:
+                  return json.load(resp)
 
-          params = urllib.parse.urlencode({
-              "part": "statistics,snippet",
-              "id": ",".join(ids),
-              "key": api_key,
-          })
-          url = f"https://www.googleapis.com/youtube/v3/videos?{params}"
-          with urllib.request.urlopen(url) as resp:
-              data = json.load(resp)
+          # 1) trouver la playlist des uploads de la chaîne
+          ch = api("channels", part="contentDetails", forHandle=handle)
+          uploads_playlist = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
-          stats = {}
-          for item in data.get("items", []):
-              vid = item["id"]
-              stats[vid] = {
+          # 2) récupérer les dernières vidéos publiées (50 max, pour ne pas rater
+          #    les vidéos longues/lives noyées parmi des Shorts plus récents)
+          items = api("playlistItems", part="contentDetails", playlistId=uploads_playlist, maxResults=50)
+          ids = [it["contentDetails"]["videoId"] for it in items.get("items", [])]
+          if not ids:
+              raise SystemExit("No videos found on channel uploads playlist")
+
+          # 3) détails complets (durée, live ou non, vues, date)
+          details = api("videos", part="snippet,statistics,contentDetails,liveStreamingDetails", id=",".join(ids))
+
+          def parse_duration_seconds(iso):
+              import re
+              m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+              if not m:
+                  return 0
+              h, mn, s = (int(x) if x else 0 for x in m.groups())
+              return h * 3600 + mn * 60 + s
+
+          videos = []
+          lives = []
+          for item in details.get("items", []):
+              duration_s = parse_duration_seconds(item["contentDetails"].get("duration"))
+              is_short = duration_s > 0 and duration_s <= 60
+              if is_short:
+                  continue  # on exclut totalement les Shorts
+              entry = {
+                  "id": item["id"],
+                  "publishedAt": item["snippet"]["publishedAt"],
                   "viewCount": int(item["statistics"].get("viewCount", 0)),
-                  "publishedAt": item["snippet"].get("publishedAt"),
               }
+              if "liveStreamingDetails" in item:
+                  lives.append(entry)
+              else:
+                  videos.append(entry)
 
-          out = {
-              "updatedAt": datetime.datetime.utcnow().isoformat() + "Z",
-              "stats": stats,
-          }
+          videos.sort(key=lambda v: v["publishedAt"], reverse=True)
+          lives.sort(key=lambda v: v["publishedAt"], reverse=True)
+
+          selected = videos[:2]
+          if lives:
+              selected.append(lives[0])
+          selected.sort(key=lambda v: v["publishedAt"], reverse=True)
+
+          videos_out = [{"id": v["id"], "type": "live" if v in lives[:1] else "video"} for v in selected]
+          stats_out = {v["id"]: {"viewCount": v["viewCount"], "publishedAt": v["publishedAt"]} for v in selected}
+
+          with open("videos.json", "w") as f:
+              json.dump(videos_out, f, indent=2, ensure_ascii=False)
+              f.write("\n")
+
           with open("video-stats.json", "w") as f:
-              json.dump(out, f, indent=2, ensure_ascii=False)
+              json.dump({
+                  "updatedAt": datetime.datetime.utcnow().isoformat() + "Z",
+                  "stats": stats_out,
+              }, f, indent=2, ensure_ascii=False)
               f.write("\n")
           PY
 
@@ -60,10 +100,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- video-stats.json; then
-            git add video-stats.json
-            git commit -m "Update video stats"
+          if ! git diff --quiet -- videos.json video-stats.json; then
+            git add videos.json video-stats.json
+            git commit -m "Update tracked videos and stats"
             git push
           else
-            echo "No stats change"
+            echo "No change"
           fi
