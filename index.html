@@ -135,7 +135,7 @@
     .casting-strip-inner { max-width: 1400px; margin: 0 auto; padding: 72px 64px; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
     .casting-strip-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sky); margin-bottom: 16px; }
     .casting-strip-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 60px); font-weight: 600; line-height: 1.05; color: #fff; letter-spacing: -0.02em; }
-    .casting-strip-btn { flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 500; padding: 16px 36px; text-decoration: none; border-radius: 2px; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+    .casting-strip-btn { flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 500; font-family: inherit; padding: 16px 36px; text-decoration: none; border: none; border-radius: 2px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
     .casting-strip-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(26,75,255,0.45); }
 
     /* ── ROLES GRID (liste) ── */
@@ -364,7 +364,7 @@
       <a href="#travaux" class="nav-link">Travaux</a>
       <a href="#postes" class="nav-link">Postes</a>
       <a href="mailto:contact.loaaannn@gmail.com" class="nav-link">Contact</a>
-      <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" class="nav-cta">Postuler</a>
+      <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer" class="nav-cta">Postuler</a>
     </div>
   </nav>
 
@@ -404,13 +404,13 @@
   <section class="casting-strip reveal">
     <div class="casting-strip-inner">
       <div>
-        <span class="casting-strip-label">★ Recherche prioritaire — Casting ouvert</span>
-        <h2 class="casting-strip-title">Acteur disponible<br>région parisienne ?</h2>
+        <span class="casting-strip-label">⚡ Recherche urgente — Poste prioritaire</span>
+        <h2 class="casting-strip-title">Monteur(se) Short<br>disponible tout de suite ?</h2>
       </div>
-      <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" class="casting-strip-btn">
-        Postuler comme acteur(trice)
+      <button type="button" class="casting-strip-btn" onclick="openOverlay('ov-short')">
+        Si intéressé, clique ici
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      </button>
     </div>
   </section>
 
@@ -418,7 +418,7 @@
   <section class="work-section reveal" id="travaux">
     <div class="work-header">
       <div><h2 class="work-title">Mes travaux</h2><p class="work-sub">Un aperçu de l'univers dans lequel tu vas travailler.</p></div>
-      <a href="https://www.youtube.com/@Loaaannn" target="_blank" class="work-link">Voir la chaîne →</a>
+      <a href="https://www.youtube.com/@Loaaannn" target="_blank" rel="noopener noreferrer" class="work-link">Voir la chaîne →</a>
     </div>
     <div class="thumbs-grid" id="thumbsGrid"></div>
   </section>
@@ -461,7 +461,7 @@
         <p class="overlay-desc">Le montage, c'est ce qui fait qu'on reste ou qu'on décroche. Je cherche quelqu'un dont le niveau de rétention est <strong>10x supérieur</strong> à ce que je fais actuellement. Pas juste couper proprement — construire une tension, un rythme, une émotion. Chaque coupe doit être une décision narrative.</p>
         <div class="overlay-video-ref">
           <span class="overlay-ref-label">Mon montage actuel → attente : 10x ce niveau</span>
-          <a class="overlay-video-embed" href="https://youtu.be/T9yfijVOCpw" target="_blank">
+          <a class="overlay-video-embed" href="https://youtu.be/T9yfijVOCpw" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/T9yfijVOCpw/maxresdefault.jpg" alt="Miniature vidéo Loan" onerror="this.src='https://img.youtube.com/vi/T9yfijVOCpw/hqdefault.jpg'"/>
             <div class="overlay-embed-play">
               <div class="overlay-embed-play-btn"><svg viewBox="0 0 24 24" fill="#1a1a2e"><path d="M8 5v14l11-7z"/></svg></div>
@@ -469,7 +469,7 @@
             <span class="overlay-embed-source">YouTube · @Loaaannn</span>
           </a>
         </div>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 02 MONTEUR SHORT -->
@@ -480,21 +480,21 @@
         <p class="overlay-desc"><strong>Objectif : 200 000 vues minimum par Short.</strong> La patte attendue :</p>
         <div class="overlay-video-ref">
           <span class="overlay-ref-label">Exemple TikTok de référence — viser + de punch</span>
-          <a class="overlay-tiktok-embed" href="https://vm.tiktok.com/ZN8jpvSAb/" target="_blank">
+          <a class="overlay-tiktok-embed" href="https://vm.tiktok.com/ZN8jpvSAb/" target="_blank" rel="noopener noreferrer">
             <div class="overlay-tiktok-bg">
               <svg class="overlay-tiktok-logo" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/></svg>
               <div class="overlay-tiktok-play"><svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
           </a>
         </div>
-        <div class="overlay-cta-row"><span class="overlay-price">Pack 5 Shorts / mois — propose ton tarif</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Pack 5 Shorts / mois — propose ton tarif</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 03 ETALONNEUR -->
       <div class="overlay-panel" id="ov-etalon">
         <h2 class="overlay-title"><em>Étalonneur(se)</em></h2>
         <p class="overlay-desc">L'étalonnage n'est pas une correction — c'est une décision artistique. Je veux que chaque plan ait l'air d'un <strong>film</strong>. Pas une vidéo YouTube propre. Un film. Références : Dune, Blade Runner 2049, Sicario. Tu travailles en DaVinci Resolve sur S-Log ou RAW et tu sais ce que ça veut dire de donner une âme à une image.</p>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 04 SOUND DESIGNER -->
@@ -503,7 +503,7 @@
         <p class="overlay-desc">Je veux qu'on <em>ressente</em> physiquement les vidéos. Des SFX à chaque seconde — chaque mot de la voix-off, chaque coupe, chaque plan a sa couche sonore. L'ambiance doit être immersive au point qu'on oublie qu'on regarde une vidéo YouTube. Références absolues : Trent Reznor, Hans Zimmer.</p>
         <div class="overlay-video-ref">
           <span class="overlay-ref-label">Niveau attendu — Mack</span>
-          <a class="overlay-video-embed" href="https://youtu.be/hh3JCjOHG_E?si=NzmNHXLiTAt7iIkz" target="_blank">
+          <a class="overlay-video-embed" href="https://youtu.be/hh3JCjOHG_E?si=NzmNHXLiTAt7iIkz" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/hh3JCjOHG_E/maxresdefault.jpg" alt="Miniature Mack" onerror="this.src='https://img.youtube.com/vi/hh3JCjOHG_E/hqdefault.jpg'"/>
             <div class="overlay-embed-play">
               <div class="overlay-embed-play-btn"><svg viewBox="0 0 24 24" fill="#1a1a2e"><path d="M8 5v14l11-7z"/></svg></div>
@@ -511,28 +511,28 @@
             <span class="overlay-embed-source">YouTube · Mack</span>
           </a>
         </div>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 05 VFX -->
       <div class="overlay-panel" id="ov-vfx">
         <h2 class="overlay-title">Artiste <em>VFX</em></h2>
         <p class="overlay-desc">Environnements 3D, fond vert, compositing avancé, tracking, simulations, intégrations CGI dans l'image réelle. Tu crées des effets qui ne ressemblent pas à des effets. Blender, Cinema 4D, After Effects, Nuke, Houdini — peu importe l'outil. Ce qui compte : le résultat à l'écran doit être indiscernable du réel.</p>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 06 AUTEUR -->
       <div class="overlay-panel" id="ov-auteur">
         <h2 class="overlay-title"><em>Auteur(e)</em></h2>
         <p class="overlay-desc">Tu construis le script et la voix-off. Tu écris des phrases qui sonnent juste à l'oreille et qui restent gravées. Tu connais la différence entre un texte à lire et un texte à entendre — et tu maîtrises cette nuance instinctivement. Chaque ligne doit avoir du poids.</p>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 07 CADREUR -->
       <div class="overlay-panel" id="ov-cadreur">
         <h2 class="overlay-title"><em>Cadreur(se)</em></h2>
         <p class="overlay-desc">Tu opères la caméra sur le terrain. Pas juste filmer — composer. Pour chaque situation tu trouves instinctivement le bon angle, la bonne distance, le bon mouvement. Tu anticipes l'action sans qu'on te le dise. Tu maîtrises le S-Log et la lumière disponible, et tu comprends que chaque plan doit raconter quelque chose même sans son.</p>
-        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
       <!-- 08 TROUVEUR DE SUJETS -->
@@ -541,7 +541,7 @@
         <p class="overlay-desc">Le principe — <strong>Tiers+</strong> : tu ne proposes que des sujets qui méritent un tier S ou au-dessus. Pas des idées moyennes. Uniquement des concepts avec un vrai potentiel de millions de vues, une tension narrative forte, quelque chose d'unique à l'écran. Rémunéré uniquement si le sujet est retenu et réalisé.</p>
         <div class="overlay-video-ref">
           <span class="overlay-ref-label">Niveau de concept minimum — Mack</span>
-          <a class="overlay-video-embed" href="https://youtu.be/hh3JCjOHG_E?si=NzmNHXLiTAt7iIkz" target="_blank">
+          <a class="overlay-video-embed" href="https://youtu.be/hh3JCjOHG_E?si=NzmNHXLiTAt7iIkz" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/hh3JCjOHG_E/maxresdefault.jpg" alt="Miniature Mack" onerror="this.src='https://img.youtube.com/vi/hh3JCjOHG_E/hqdefault.jpg'"/>
             <div class="overlay-embed-play">
               <div class="overlay-embed-play-btn"><svg viewBox="0 0 24 24" fill="#1a1a2e"><path d="M8 5v14l11-7z"/></svg></div>
@@ -549,7 +549,7 @@
             <span class="overlay-embed-source">YouTube · Mack — plancher minimum</span>
           </a>
         </div>
-        <div class="overlay-cta-row"><span class="overlay-price">Payé si sujet retenu & réalisé</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="overlay-cta-row"><span class="overlay-price">Payé si sujet retenu & réalisé</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer">Postuler <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
     </div><!-- /overlay-content -->
@@ -562,18 +562,71 @@
     <div class="closing-quote">Certaines vidéos sont oubliées<br>le lendemain.<br><em>Les nôtres, non.</em></div>
     <div class="closing-right">
       <p class="closing-text">Je ne cherche pas quelqu'un qui connaît les outils. Je cherche quelqu'un qui, devant une image, sait instinctivement ce qui manque. Ce genre de regard, ça ne s'apprend pas — soit tu l'as, soit tu sais que tu l'as.</p>
-      <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" class="closing-cta">Rejoindre la production <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer" class="closing-cta">Rejoindre la production <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </section>
 
   <footer class="reveal">
     <span class="footer-name">Loan</span>
     <div class="footer-links">
-      <a href="https://www.youtube.com/@Loaaannn" target="_blank">YouTube</a>
+      <a href="https://www.youtube.com/@Loaaannn" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="mailto:contact.loaaannn@gmail.com">contact.loaaannn@gmail.com</a>
+      <a href="#" onclick="event.preventDefault(); openLegal('legal-mentions')">Mentions légales</a>
+      <a href="#" onclick="event.preventDefault(); openLegal('legal-privacy')">Confidentialité</a>
     </div>
     <span class="footer-copy">Paris · 2026</span>
   </footer>
+
+  <!-- MENTIONS LÉGALES / CONFIDENTIALITÉ -->
+  <div class="role-overlay" id="legalOverlay" onclick="handleLegalClick(event)">
+    <button class="overlay-close" id="legalClose" onclick="closeLegal()">✕</button>
+    <div class="overlay-content">
+      <div class="overlay-panel active" id="legal-mentions" style="text-align:left; align-items:flex-start; max-width:720px;">
+        <h2 class="overlay-title" style="font-size:clamp(30px,4vw,44px);">Mentions <em>légales</em></h2>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Éditeur du site</strong><br>
+          Ce site est édité à titre non professionnel par Loan, créateur de contenu indépendant (chaîne YouTube « Loaaannn »).<br>
+          Contact : <a href="mailto:contact.loaaannn@gmail.com" style="color:inherit;">contact.loaaannn@gmail.com</a><br>
+          Conformément à l'article 6-III de la LCEN, les coordonnées complètes de l'éditeur sont tenues à la disposition des autorités compétentes et ne sont pas publiées lorsque l'éditeur est une personne physique agissant à titre non professionnel.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Directeur de la publication</strong><br>Loan.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Hébergement</strong><br>
+          GitHub Pages — GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.<br>
+          Vercel — Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Propriété intellectuelle</strong><br>
+          L'ensemble des contenus de ce site (textes, images, vidéos, mise en page) est la propriété de Loan, sauf mention contraire, et ne peut être reproduit sans autorisation.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Liens externes</strong><br>
+          Ce site contient des liens vers YouTube, TikTok et Google Forms, plateformes tierces soumises à leurs propres conditions d'utilisation et politiques de confidentialité.
+        </p>
+      </div>
+      <div class="overlay-panel" id="legal-privacy" style="text-align:left; align-items:flex-start; max-width:720px;">
+        <h2 class="overlay-title" style="font-size:clamp(30px,4vw,44px);">Confidentialité</h2>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Données collectées</strong><br>
+          Ce site lui-même ne collecte, ne stocke et ne transmet aucune donnée personnelle. Il n'utilise aucun outil de suivi ni d'analyse (pas de Google Analytics, pas de pixel publicitaire).
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Formulaire de candidature</strong><br>
+          Le formulaire de candidature ("Postuler") est hébergé par Google Forms. Les données que tu y renseignes sont traitées directement par Google et par Loan pour l'étude de ta candidature, conformément à la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:inherit;">politique de confidentialité de Google</a>. Elles ne sont utilisées à aucune autre fin ni transmises à des tiers.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Polices de caractères</strong><br>
+          Les polices sont chargées depuis Google Fonts, ce qui peut entraîner une connexion technique aux serveurs de Google lors du chargement de la page.
+        </p>
+        <p class="overlay-desc" style="text-align:left; font-size:15px; max-width:100%;">
+          <strong>Tes droits</strong><br>
+          Conformément au RGPD, tu peux demander l'accès, la rectification ou la suppression de tes données de candidature à tout moment en écrivant à <a href="mailto:contact.loaaannn@gmail.com" style="color:inherit;">contact.loaaannn@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <script>
     // NAV SCROLL
@@ -613,8 +666,27 @@
       document.querySelector('.overlay-content').scrollTop = 0;
     }
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeOverlay();
+      if (e.key === 'Escape') { closeOverlay(); closeLegal(); }
     });
+
+    // MENTIONS LÉGALES / CONFIDENTIALITÉ
+    const legalOverlay = document.getElementById('legalOverlay');
+    const legalClose = document.getElementById('legalClose');
+    function openLegal(panelId) {
+      document.querySelectorAll('#legalOverlay .overlay-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(panelId).classList.add('active');
+      legalOverlay.classList.add('open');
+      legalClose.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegal() {
+      legalOverlay.classList.remove('open');
+      legalClose.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+    function handleLegalClick(e) {
+      if (e.target === legalOverlay) closeLegal();
+    }
 
     // TRAVAUX — miniatures vidéo dynamiques (vues + ancienneté mises à jour automatiquement)
     function formatTimeAgo(iso) {
@@ -650,7 +722,7 @@
         const parts = [formatViews(s.viewCount), formatTimeAgo(s.publishedAt)].filter(Boolean);
         const statsLine = parts.length ? parts.join(' · ') : 'Chargement…';
         const liveBadge = v.type === 'live' ? '<div class="thumb-live-badge">Live</div>' : '';
-        return `<a class="thumb-card" href="https://youtu.be/${v.id}" target="_blank" data-video-id="${v.id}">
+        return `<a class="thumb-card" href="https://youtu.be/${v.id}" target="_blank" rel="noopener noreferrer" data-video-id="${v.id}">
           <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg" alt="Miniature vidéo" onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'"/>
           <div class="thumb-overlay"></div>
           ${liveBadge}
