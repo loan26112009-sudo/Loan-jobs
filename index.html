@@ -341,20 +341,33 @@
       .overlay-content { padding: 80px 40px 60px; }
     }
     @media (max-width: 760px) {
-      nav, .hero, .work-section, .jobs-section, .closing, footer { padding-left: 24px; padding-right: 24px; }
+      nav { padding-left: 20px; padding-right: 20px; }
+      .hero, .work-section, .jobs-section, .closing, footer { padding-left: 24px; padding-right: 24px; }
+      .nav-link { display: none; }
+      .nav-right { gap: 12px; }
       .thumbs-grid { grid-template-columns: 1fr; }
       .info-band-inner { grid-template-columns: 1fr; }
       .info-item { border-right: none !important; border-bottom: 1px solid var(--border); }
       .info-item:last-child { border-bottom: none; }
       .closing { grid-template-columns: 1fr; gap: 44px; padding: 72px 24px; }
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
       .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
       .roles-grid { grid-template-columns: 1fr 1fr; }
-      .overlay-sidebar { display: none; }
-      .overlay-content { padding: 80px 24px 60px; }
+      .role-overlay { flex-direction: column; }
+      .overlay-sidebar {
+        width: 100%; height: auto; flex-direction: row; overflow-x: auto; overflow-y: hidden;
+        border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 74px 44px 10px 14px; -webkit-overflow-scrolling: touch;
+      }
+      .overlay-nav-item { padding: 10px 16px; white-space: nowrap; flex-shrink: 0; border-left: none; border-bottom: 3px solid transparent; }
+      .overlay-nav-item.active { border-left-color: transparent; border-bottom-color: var(--blue); }
+      .overlay-content { padding: 80px 20px 60px; }
+      #roleOverlay .overlay-content { padding-top: 20px; }
+      .overlay-panel { padding: 40px 4px 60px; gap: 26px; }
       .casting-strip-inner { flex-direction: column; align-items: flex-start; gap: 28px; padding: 48px 24px; }
     }
-    @media (max-width: 480px) { .roles-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .roles-grid { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
 </head>
@@ -576,7 +589,7 @@
       <a href="#" onclick="event.preventDefault(); openLegal('legal-mentions')">Mentions légales</a>
       <a href="#" onclick="event.preventDefault(); openLegal('legal-privacy')">Confidentialité</a>
     </div>
-    <span class="footer-copy">Paris · 2026</span>
+    <span class="footer-copy">© Loan · 2026</span>
   </footer>
 
   <!-- MENTIONS LÉGALES / CONFIDENTIALITÉ -->
