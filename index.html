@@ -616,18 +616,28 @@
       if (e.key === 'Escape') closeOverlay();
     });
 
-    // TRAVAUX — miniatures vidéo dynamiques (vues + durée mises à jour automatiquement)
-    function formatDuration(iso) {
-      if (!iso) return '';
-      const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-      if (!m) return '';
-      const h = parseInt(m[1] || '0', 10), min = parseInt(m[2] || '0', 10), s = parseInt(m[3] || '0', 10);
-      const pad = n => String(n).padStart(2, '0');
-      return h > 0 ? `${h}:${pad(min)}:${pad(s)}` : `${min}:${pad(s)}`;
+    // TRAVAUX — miniatures vidéo dynamiques (vues + ancienneté mises à jour automatiquement)
+    function formatTimeAgo(iso) {
+      if (!iso) return null;
+      const days = (Date.now() - new Date(iso).getTime()) / 86400000;
+      const years = days / 365.25;
+      if (years >= 1) { const y = Math.round(years); return `il y a ${y} an${y > 1 ? 's' : ''}`; }
+      const months = days / 30.44;
+      if (months >= 1) { const m = Math.round(months); return `il y a ${m} mois`; }
+      const w = Math.max(1, Math.round(days / 7));
+      return `il y a ${w} semaine${w > 1 ? 's' : ''}`;
     }
     function formatViews(n) {
       if (n === undefined || n === null) return null;
-      return `${Number(n).toLocaleString('fr-FR')} vues`;
+      n = Number(n);
+      let step;
+      if (n < 1000) step = 100;
+      else if (n < 10000) step = 500;
+      else if (n < 100000) step = 5000;
+      else if (n < 1000000) step = 25000;
+      else step = 100000;
+      const rounded = Math.round(n / step) * step;
+      return `${rounded.toLocaleString('fr-FR')} vues`;
     }
     async function renderThumbs() {
       const grid = document.getElementById('thumbsGrid');
@@ -637,7 +647,7 @@
       try { stats = (await (await fetch('video-stats.json', { cache: 'no-store' })).json()).stats || {}; } catch (e) {}
       grid.innerHTML = videos.map(v => {
         const s = stats[v.id] || {};
-        const parts = [formatViews(s.viewCount), formatDuration(s.duration)].filter(Boolean);
+        const parts = [formatViews(s.viewCount), formatTimeAgo(s.publishedAt)].filter(Boolean);
         const statsLine = parts.length ? parts.join(' · ') : 'Chargement…';
         const liveBadge = v.type === 'live' ? '<div class="thumb-live-badge">Live</div>' : '';
         return `<a class="thumb-card" href="https://youtu.be/${v.id}" target="_blank" data-video-id="${v.id}">

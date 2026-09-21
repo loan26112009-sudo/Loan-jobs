@@ -31,7 +31,7 @@ jobs:
           ids = [v["id"] for v in videos]
 
           params = urllib.parse.urlencode({
-              "part": "statistics,contentDetails",
+              "part": "statistics,snippet",
               "id": ",".join(ids),
               "key": api_key,
           })
@@ -44,7 +44,7 @@ jobs:
               vid = item["id"]
               stats[vid] = {
                   "viewCount": int(item["statistics"].get("viewCount", 0)),
-                  "duration": item["contentDetails"].get("duration"),
+                  "publishedAt": item["snippet"].get("publishedAt"),
               }
 
           out = {
