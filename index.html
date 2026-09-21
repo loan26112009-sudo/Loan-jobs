@@ -125,6 +125,9 @@
     .thumb-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); width: 52px; height: 52px; opacity: 0; transition: opacity 0.25s, transform 0.25s; pointer-events: none; }
     .thumb-play svg { width: 100%; height: 100%; }
     .thumb-card:hover .thumb-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .thumb-live-badge { position: absolute; top: 12px; left: 12px; display: flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; background: rgba(220,30,50,0.9); padding: 4px 10px; border-radius: 3px; }
+    .thumb-live-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: dotPulse 1.6s ease-in-out infinite; }
+    .thumb-stats { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.75); }
 
     /* ── CASTING STRIP (acteur) ── */
     .casting-strip { background: linear-gradient(170deg, #060c20 0%, #0b1640 50%, #080e28 100%); border-top: 1px solid rgba(26,75,255,0.12); border-bottom: 1px solid rgba(26,75,255,0.12); }
@@ -316,16 +319,6 @@
     .footer-links a:hover { color: var(--blue); }
     .footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--dim); }
 
-    /* ── LIGHTBOX ── */
-    .lightbox { position: fixed; inset: 0; z-index: 500; background: rgba(4,6,16,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(12px); }
-    .lightbox.open { opacity: 1; pointer-events: all; }
-    .lightbox-img { max-width: 88vw; max-height: 75vh; object-fit: contain; border-radius: 4px; box-shadow: 0 24px 80px rgba(0,0,0,0.7); transform: scale(0.94); transition: transform 0.35s ease; }
-    .lightbox.open .lightbox-img { transform: scale(1); }
-    .lightbox-caption { margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(160,190,255,0.5); }
-    .lightbox-close { position: absolute; top: 28px; right: 36px; font-size: 28px; color: rgba(255,255,255,0.4); cursor: pointer; background: none; border: none; transition: color 0.2s; line-height: 1; }
-    .lightbox-close:hover { color: #fff; }
-    .lightbox-hint { position: absolute; bottom: 28px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(160,190,255,0.25); }
-
     /* ── ANIMATIONS ── */
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;} }
     .reveal { opacity:0; transform:translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -426,11 +419,7 @@
       <div><h2 class="work-title">Mes travaux</h2><p class="work-sub">Un aperçu de l'univers dans lequel tu vas travailler.</p></div>
       <a href="https://www.youtube.com/@Loaaannn" target="_blank" class="work-link">Voir la chaîne →</a>
     </div>
-    <div class="thumbs-grid">
-      <div class="thumb-card" onclick="openLightbox('https://loan26112009-sudo.github.io/Loan-jobs/thumb1.png','Plan 1')"><img src="https://loan26112009-sudo.github.io/Loan-jobs/thumb1.png" alt="Plan 1"/><div class="thumb-overlay"></div><div class="thumb-play"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5" opacity="0.6"/><path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="white"/></svg></div><span class="thumb-label">Plan 1</span></div>
-      <div class="thumb-card" onclick="openLightbox('https://loan26112009-sudo.github.io/Loan-jobs/thumb2.png','Plan 2')"><img src="https://loan26112009-sudo.github.io/Loan-jobs/thumb2.png" alt="Plan 2"/><div class="thumb-overlay"></div><div class="thumb-play"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5" opacity="0.6"/><path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="white"/></svg></div><span class="thumb-label">Plan 2</span></div>
-      <div class="thumb-card" onclick="openLightbox('https://loan26112009-sudo.github.io/Loan-jobs/thumb3.png','Plan 3')"><img src="https://loan26112009-sudo.github.io/Loan-jobs/thumb3.png" alt="Plan 3"/><div class="thumb-overlay"></div><div class="thumb-play"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5" opacity="0.6"/><path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="white"/></svg></div><span class="thumb-label">Plan 3</span></div>
-    </div>
+    <div class="thumbs-grid" id="thumbsGrid"></div>
   </section>
 
   <!-- POSTES — grille de cartes -->
@@ -585,14 +574,6 @@
     <span class="footer-copy">Paris · 2026</span>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightboxDirect()">✕</button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
-    <span class="lightbox-caption" id="lightboxCaption"></span>
-    <span class="lightbox-hint">Cliquer en dehors pour fermer · Échap pour quitter</span>
-  </div>
-
   <script>
     // NAV SCROLL
     const nav = document.getElementById('nav');
@@ -631,23 +612,43 @@
       document.querySelector('.overlay-content').scrollTop = 0;
     }
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeOverlay(); closeLightboxDirect(); }
+      if (e.key === 'Escape') closeOverlay();
     });
 
-    // LIGHTBOX
-    function openLightbox(src, caption) {
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxCaption').textContent = caption;
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
+    // TRAVAUX — miniatures vidéo dynamiques (vues + durée mises à jour automatiquement)
+    function formatDuration(iso) {
+      if (!iso) return '';
+      const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+      if (!m) return '';
+      const h = parseInt(m[1] || '0', 10), min = parseInt(m[2] || '0', 10), s = parseInt(m[3] || '0', 10);
+      const pad = n => String(n).padStart(2, '0');
+      return h > 0 ? `${h}:${pad(min)}:${pad(s)}` : `${min}:${pad(s)}`;
     }
-    function closeLightboxDirect() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
+    function formatViews(n) {
+      if (n === undefined || n === null) return null;
+      return `${Number(n).toLocaleString('fr-FR')} vues`;
     }
-    function closeLightbox(e) {
-      if (e.target === document.getElementById('lightbox')) closeLightboxDirect();
+    async function renderThumbs() {
+      const grid = document.getElementById('thumbsGrid');
+      let videos = [];
+      let stats = {};
+      try { videos = await (await fetch('videos.json', { cache: 'no-store' })).json(); } catch (e) {}
+      try { stats = (await (await fetch('video-stats.json', { cache: 'no-store' })).json()).stats || {}; } catch (e) {}
+      grid.innerHTML = videos.map(v => {
+        const s = stats[v.id] || {};
+        const parts = [formatViews(s.viewCount), formatDuration(s.duration)].filter(Boolean);
+        const statsLine = parts.length ? parts.join(' · ') : 'Chargement…';
+        const liveBadge = v.type === 'live' ? '<div class="thumb-live-badge">Live</div>' : '';
+        return `<a class="thumb-card" href="https://youtu.be/${v.id}" target="_blank" data-video-id="${v.id}">
+          <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg" alt="Miniature vidéo" onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'"/>
+          <div class="thumb-overlay"></div>
+          ${liveBadge}
+          <div class="thumb-play"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5" opacity="0.6"/><path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="white"/></svg></div>
+          <span class="thumb-label"><span class="thumb-stats">${statsLine}</span></span>
+        </a>`;
+      }).join('');
     }
+    renderThumbs();
   </script>
 </body>
 </html>
