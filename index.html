@@ -217,6 +217,7 @@
     /* preview vidéo grande — style embed Discord */
     .overlay-video-ref { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: center; }
     .overlay-ref-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(160,190,255,0.4); }
+    .overlay-ref-label--highlight { color: #fff; font-size: 11px; padding: 8px 20px; border-radius: 20px; background: linear-gradient(90deg, rgba(26,75,255,0.35), rgba(102,144,255,0.25)); box-shadow: 0 0 24px rgba(26,75,255,0.35); }
     .overlay-video-embed {
       position: relative; width: 100%; max-width: 680px;
       aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;
@@ -269,10 +270,12 @@
       position: relative;
     }
     .overlay-tiktok-bg::before {
-      content: ''; position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0; z-index: 1;
       background: rgba(0,0,0,0.55);
     }
-    .overlay-tiktok-logo { width: 72px; height: 72px; position: relative; z-index: 1; }
+    .overlay-tiktok-logo { width: 72px; height: 72px; position: relative; z-index: 1; transition: opacity 0.2s; }
+    .overlay-tiktok-bg.has-thumb .overlay-tiktok-logo { opacity: 0; }
+    .overlay-tiktok-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
     .overlay-tiktok-play {
       width: 80px; height: 80px; border-radius: 50%;
       background: rgba(255,255,255,0.95);
@@ -506,7 +509,7 @@
           </div>
         </div>
         <div class="overlay-video-ref">
-          <span class="overlay-ref-label">Inspiration — le style que je veux</span>
+          <span class="overlay-ref-label overlay-ref-label--highlight">★ Inspiration — le style que je veux</span>
           <div class="overlay-inspo-row">
             <a class="overlay-tiktok-embed overlay-tiktok-embed--sm" href="https://vm.tiktok.com/ZGdQ4BXR8/" target="_blank" rel="noopener noreferrer">
               <div class="overlay-tiktok-bg">
@@ -782,6 +785,29 @@
       }).join('');
     }
     renderThumbs();
+
+    // Miniatures TikTok réelles via l'API oEmbed publique (avec repli sur le visuel par défaut si ça échoue)
+    async function loadTiktokThumbs() {
+      const embeds = document.querySelectorAll('.overlay-tiktok-embed');
+      for (const embed of embeds) {
+        const bg = embed.querySelector('.overlay-tiktok-bg');
+        if (!bg || bg.querySelector('.overlay-tiktok-thumb')) continue;
+        try {
+          const res = await fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(embed.href)}`);
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (!data.thumbnail_url) continue;
+          const img = document.createElement('img');
+          img.className = 'overlay-tiktok-thumb';
+          img.alt = data.title || 'Miniature TikTok';
+          img.loading = 'lazy';
+          img.onload = () => bg.classList.add('has-thumb');
+          img.src = data.thumbnail_url;
+          bg.prepend(img);
+        } catch (e) { /* garde le visuel par défaut */ }
+      }
+    }
+    loadTiktokThumbs();
   </script>
 </body>
 </html>
