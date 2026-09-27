@@ -199,12 +199,11 @@
     .role-overlay {
       position: fixed; inset: 0; z-index: 400;
       background: rgba(4,8,20,0.97);
-      backdrop-filter: blur(16px);
       display: flex; align-items: stretch;
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s ease;
     }
-    .role-overlay.open { opacity: 1; pointer-events: all; }
+    .role-overlay.open { opacity: 1; pointer-events: all; backdrop-filter: blur(16px); }
 
     .overlay-sidebar {
       width: 260px; flex-shrink: 0;
