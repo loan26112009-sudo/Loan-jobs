@@ -132,6 +132,28 @@
 
     /* ── WORK SECTION (3 plans) ── */
     .work-section { padding: 80px 64px; background: var(--white); border-bottom: 1px solid var(--border); }
+
+    /* ── COMMENT ÇA MARCHE ── */
+    .steps-strip { background: var(--white); border-bottom: 1px solid var(--border); padding: 32px 64px; }
+    .steps-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .step { display: flex; align-items: center; gap: 12px; }
+    .step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: var(--blue); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; }
+    .step-text { font-size: 15px; font-weight: 500; color: var(--title); white-space: nowrap; }
+    .step-arrow { color: var(--dim); flex-shrink: 0; }
+
+    /* ── BOUTON POSTULER FLOTTANT ── */
+    .floating-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 150;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--blue); color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 600; padding: 14px 26px; border-radius: 30px;
+      box-shadow: 0 8px 28px rgba(26,75,255,0.4);
+      opacity: 0; transform: translateY(16px) scale(0.9); pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s;
+    }
+    .floating-cta.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+    .floating-cta:hover { box-shadow: 0 10px 36px rgba(26,75,255,0.55); transform: translateY(-2px); }
+    @media (max-width: 640px) { .floating-cta { bottom: 16px; right: 16px; padding: 13px 22px; font-size: 13px; } }
     .work-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
     .work-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; color: var(--title); letter-spacing: -0.02em; }
     .work-sub { font-size: 13px; color: var(--muted); margin-top: 5px; }
@@ -473,6 +495,17 @@
     </div>
   </section>
 
+  <!-- COMMENT ÇA MARCHE — 3 étapes -->
+  <section class="steps-strip reveal">
+    <div class="steps-inner">
+      <div class="step"><span class="step-num">1</span><span class="step-text" data-i18n="step1">Regarde les postes</span></div>
+      <svg class="step-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h13M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="step"><span class="step-num">2</span><span class="step-text" data-i18n="step2">Clique sur Postuler</span></div>
+      <svg class="step-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h13M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="step"><span class="step-num">3</span><span class="step-text" data-i18n="step3">Rejoins le Discord</span></div>
+    </div>
+  </section>
+
   <!-- TRAVAUX — 3 plans statiques -->
   <section class="work-section reveal" id="travaux">
     <div class="work-header">
@@ -765,6 +798,11 @@
     </div>
   </div>
 
+  <a href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer" class="floating-cta" id="floatingCta">
+    <span data-i18n="postuler">Postuler</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
   <script>
     // I18N — FR (langue source, capturée depuis le HTML) / EN
     let currentLang = 'fr';
@@ -797,6 +835,9 @@
       'work-title': 'My work',
       'work-sub': "A look at the world you'll be working in.",
       'work-link': 'See the channel →',
+      'step1': 'Check out the roles',
+      'step2': 'Click Apply',
+      'step3': 'Join the Discord',
       'jobs-title': 'Open roles',
       'jobs-sub': 'Click a role to see the full expectations.',
       'jobs-count': '8 roles + yours',
@@ -886,6 +927,10 @@
     // NAV SCROLL
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+    // BOUTON POSTULER FLOTTANT — apparaît une fois le hero passé
+    const floatingCta = document.getElementById('floatingCta');
+    window.addEventListener('scroll', () => floatingCta.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6), { passive: true });
 
     // REVEAL
     const obs = new IntersectionObserver((entries) => {
