@@ -524,12 +524,12 @@
       </div>
       <div class="role-card" onclick="openOverlay('ov-sujet')">
         <div class="role-card-top"><span class="role-card-num">08</span><svg class="role-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <span class="role-card-name" data-i18n="role-sujet">Trouveur de sujets</span>
+        <span class="role-card-name" data-i18n="role-sujet">Stratège de contenu</span>
         <div class="role-card-footer"><span class="role-card-mode remote" data-i18n="mode-remote">Remote</span><span class="role-card-cta"><span data-i18n="view-role">Voir le poste</span><svg class="role-card-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M8 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       </div>
       <div class="role-card role-card--open" onclick="openOverlay('ov-autre')">
         <div class="role-card-top"><span class="role-card-num">✦</span><svg class="role-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <span class="role-card-name" data-i18n="role-other">Ton métier n'est pas là ?</span>
+        <span class="role-card-name" data-i18n="role-other">Ton rôle n'est pas là ?</span>
         <div class="role-card-footer"><span class="role-card-mode remote" data-i18n="mode-other">Toute proposition</span><span class="role-card-cta"><span data-i18n="view-role">Voir le poste</span><svg class="role-card-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M8 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       </div>
     </div>
@@ -545,8 +545,8 @@
       <div class="overlay-nav-item" data-target="ov-vfx" onclick="switchOverlayPanel('ov-vfx',this)"><span class="overlay-nav-num">05</span><span data-i18n="role-vfx">Artiste VFX</span></div>
       <div class="overlay-nav-item" data-target="ov-auteur" onclick="switchOverlayPanel('ov-auteur',this)"><span class="overlay-nav-num">06</span><span data-i18n="role-auteur">Auteur(e)</span></div>
       <div class="overlay-nav-item" data-target="ov-cadreur" onclick="switchOverlayPanel('ov-cadreur',this)"><span class="overlay-nav-num">07</span><span data-i18n="role-cadreur">Cadreur(se)</span></div>
-      <div class="overlay-nav-item" data-target="ov-sujet" onclick="switchOverlayPanel('ov-sujet',this)"><span class="overlay-nav-num">08</span><span data-i18n="role-sujet">Trouveur de sujets</span></div>
-      <div class="overlay-nav-item" data-target="ov-autre" onclick="switchOverlayPanel('ov-autre',this)"><span class="overlay-nav-num">✦</span><span data-i18n="role-other">Ton métier n'est pas là ?</span></div>
+      <div class="overlay-nav-item" data-target="ov-sujet" onclick="switchOverlayPanel('ov-sujet',this)"><span class="overlay-nav-num">08</span><span data-i18n="role-sujet">Stratège de contenu</span></div>
+      <div class="overlay-nav-item" data-target="ov-autre" onclick="switchOverlayPanel('ov-autre',this)"><span class="overlay-nav-num">✦</span><span data-i18n="role-other">Ton rôle n'est pas là ?</span></div>
     </div>
     <div class="overlay-content">
 
@@ -653,7 +653,7 @@
 
       <!-- 08 TROUVEUR DE SUJETS -->
       <div class="overlay-panel" id="ov-sujet">
-        <h2 class="overlay-title" data-i18n="role-sujet">Trouveur(se) <em>de sujets</em></h2>
+        <h2 class="overlay-title" data-i18n="ov-sujet-title">Stratège <em>de contenu</em></h2>
         <p class="overlay-desc" data-i18n="ov-sujet-desc1">Tu recherches et analyses des idées de vidéos à fort potentiel pour proposer de nouveaux concepts à la chaîne. Ce n'est pas "avoir des idées au hasard" — c'est un vrai travail d'analyse : outils comme <strong>Google Trends</strong>, <strong>VidIQ / TubeBuddy</strong>, étude des vidéos concurrentes (rétention, CTR, volume de recherche) pour <strong>appuyer chaque proposition avec des données</strong>, pas des suppositions.</p>
         <p class="overlay-desc" data-i18n="ov-sujet-desc2">Le principe — <strong>Tiers+</strong> : tu ne proposes que des concepts qui méritent un tier S ou au-dessus. Un vrai potentiel de millions de vues, une tension narrative forte, quelque chose d'unique à l'écran. Rémunéré uniquement si le sujet est retenu et réalisé.</p>
         <div class="overlay-video-ref">
@@ -671,8 +671,8 @@
 
       <!-- 09 AUTRE / POSTE LIBRE -->
       <div class="overlay-panel" id="ov-autre">
-        <h2 class="overlay-title" data-i18n="ov-autre-title">Ton métier <em>n'est pas là</em> ?</h2>
-        <p class="overlay-desc" data-i18n="ov-autre-desc">Tu n'as pas trouvé ton poste dans la liste mais tu es persuadé(e) d'avoir ta place dans cette production ? Monteur d'un autre style, photographe, motion designer, community manager, traducteur, ou un métier que je n'ai même pas pensé à lister — si tu sens que tu peux apporter quelque chose de concret, ne te censure pas. Explique-moi ce que tu sais faire, montre-moi ton travail, et dis-moi comment tu vois ta place ici.</p>
+        <h2 class="overlay-title" data-i18n="ov-autre-title">Ton rôle <em>n'est pas là</em> ?</h2>
+        <p class="overlay-desc" data-i18n="ov-autre-desc">Tu n'as pas trouvé ton poste dans la liste mais tu es persuadé(e) d'avoir ta place dans cette production ? Monteur d'un autre style, photographe, motion designer, community manager, traducteur, ou un rôle que je n'ai même pas pensé à lister — si tu sens que tu peux apporter quelque chose de concret, ne te censure pas. Explique-moi ce que tu sais faire, montre-moi ton travail, et dis-moi comment tu vois ta place ici.</p>
         <div class="overlay-cta-row"><span class="overlay-price" data-i18n="ov-autre-price">Présente-toi, on regarde ensemble</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer"><span data-i18n="postuler">Postuler</span> <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
 
@@ -788,7 +788,7 @@
       'jobs-sub': 'Click a role to see the full expectations.',
       'jobs-count': '8 roles + yours',
       'view-role': 'View role',
-      'role-other': "Don't see your skill?",
+      'role-other': "Don't see your role?",
       'mode-other': 'Any pitch',
       'role-montage': 'Editor',
       'role-short': 'Short-form Editor',
@@ -797,7 +797,7 @@
       'role-vfx': 'VFX Artist',
       'role-auteur': 'Writer',
       'role-cadreur': 'Camera Operator',
-      'role-sujet': 'Topic Scout',
+      'role-sujet': 'Content Strategist',
       'navitem-short': 'Short Editor',
       'mode-remote': 'Remote',
       'mode-onsite': 'On-site',
@@ -823,8 +823,9 @@
       'ov-sujet-desc2': 'The principle — <strong>Tier+</strong>: you only pitch concepts that deserve an S tier or above. Real potential for millions of views, strong narrative tension, something unique on screen. Paid only if the topic is selected and produced.',
       'ov-sujet-reflabel': 'Minimum concept level — Mack',
       'ov-sujet-price': 'Paid if the topic is selected & produced',
-      'ov-autre-title': "<em>Don't see</em> your skill?",
-      'ov-autre-desc': "Didn't find your role in the list but you're convinced you belong in this production? A different kind of editor, a photographer, a motion designer, a community manager, a translator, or a job I didn't even think to list — if you feel you can bring something real, don't hold back. Tell me what you can do, show me your work, and tell me how you see your place here.",
+      'ov-autre-title': "<em>Don't see</em> your role?",
+      'ov-autre-desc': "Didn't find your role in the list but you're convinced you belong in this production? A different kind of editor, a photographer, a motion designer, a community manager, a translator, or a role I didn't even think to list — if you feel you can bring something real, don't hold back. Tell me what you can do, show me your work, and tell me how you see your place here.",
+      'ov-sujet-title': 'Content <em>Strategist</em>',
       'ov-autre-price': "Introduce yourself, let's see together",
       'closing-quote': 'Some videos are forgotten<br>the next day.<br><em>Ours aren\'t.</em>',
       'closing-text': "I'm not looking for someone who knows the tools. I'm looking for someone who, in front of an image, instinctively knows what's missing. That kind of eye can't be taught — either you have it, or you know you do.",
