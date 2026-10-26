@@ -18,7 +18,7 @@ jobs:
       - name: Discover latest videos + live from the channel, fetch stats
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          CHANNEL_HANDLE: "@Loaaannn"
+          CHANNEL_HANDLE: "@LoanFilms"
         run: |
           python3 - <<'PY'
           import json, os, urllib.request, urllib.parse, datetime
@@ -36,6 +36,8 @@ jobs:
 
           # 1) trouver la playlist des uploads de la chaîne
           ch = api("channels", part="contentDetails", forHandle=handle)
+          if not ch.get("items"):
+              raise SystemExit(f"Chaine introuvable pour le handle {handle} (verifie CHANNEL_HANDLE)")
           uploads_playlist = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
           # 2) récupérer les dernières vidéos publiées (50 max, pour ne pas rater
