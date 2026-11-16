@@ -18,7 +18,7 @@ jobs:
       - name: Discover latest videos + live from the channel, fetch stats
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          CHANNEL_HANDLE: "@LoanFilms"
+          CHANNEL_HANDLE: "@Loan_ltz"
         run: |
           python3 - <<'PY'
           import json, os, urllib.request, urllib.parse, datetime
