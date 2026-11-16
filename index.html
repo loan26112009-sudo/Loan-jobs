@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loan — Site de jobs, postule pour travailler avec Loan</title>
-  <meta name="description" content="Loan réalise des vidéos d'infiltration et de défis sur YouTube depuis Paris et recrute son équipe : monteur(se), monteur(se) Short, sound designer, cadreur(se), auteur(e), stratège de contenu. Postule maintenant." />
+  <title>Loan_ltz — Site de jobs, postule pour travailler avec Loan</title>
+  <meta name="description" content="Loan — Loan_ltz — réalise des vidéos d'infiltration et de défis sur YouTube depuis Paris et recrute son équipe : monteur(se), monteur(se) Short, sound designer, auteur(e), stratège de contenu. Postule maintenant." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://loan-jobs.vercel.app/" />
   <link rel="icon" href="favicon.ico" sizes="any" />
@@ -14,14 +14,14 @@
   <!-- Open Graph / aperçu de lien (Discord, iMessage, WhatsApp, YouTube…) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Loan" />
-  <meta property="og:title" content="Loan — Site de jobs, postule pour travailler avec Loan" />
-  <meta property="og:description" content="Je réalise des vidéos d'infiltration et de défis sur YouTube depuis Paris. Je recrute une équipe : monteur(se), sound designer, cadreur(se), auteur(e) et plus." />
+  <meta property="og:title" content="Loan_ltz — Site de jobs, postule pour travailler avec Loan" />
+  <meta property="og:description" content="Je réalise des vidéos d'infiltration et de défis sur YouTube depuis Paris. Je recrute une équipe : monteur(se), sound designer, auteur(e), stratège de contenu et plus." />
   <meta property="og:url" content="https://loan-jobs.vercel.app/" />
   <meta property="og:image" content="https://loan26112009-sudo.github.io/Loan-jobs/avatar.jpg" />
   <meta property="og:image:width" content="500" />
   <meta property="og:image:height" content="500" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Loan — Site de jobs, postule pour travailler avec Loan" />
+  <meta name="twitter:title" content="Loan_ltz — Site de jobs, postule pour travailler avec Loan" />
   <meta name="twitter:description" content="Je réalise des vidéos d'infiltration et de défis sur YouTube depuis Paris. Je recrute une équipe de production." />
   <meta name="twitter:image" content="https://loan26112009-sudo.github.io/Loan-jobs/avatar.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,6 +107,7 @@
     .hero--compact { min-height: 0; padding: 120px 64px 56px; }
     .hero-inner--compact { grid-template-columns: 1fr; max-width: 680px; }
     .hero--compact .hero-sub { max-width: 100%; }
+    .hero-avatar-mini { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid rgba(102,144,255,0.35); box-shadow: 0 0 24px rgba(26,75,255,0.25); margin-bottom: 24px; -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; user-select: none; }
     .hero-text { text-align: left; }
     .hero-badge { display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(160,190,255,0.85); border: 1px solid rgba(160,190,255,0.18); background: rgba(160,190,255,0.05); padding: 8px 20px; border-radius: 2px; margin-bottom: 40px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
     .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #6690ff; box-shadow: 0 0 8px rgba(102,144,255,0.9); flex-shrink: 0; animation: dotPulse 2.4s ease-in-out infinite; }
@@ -152,12 +153,13 @@
     }
     .role-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
     .role-card:hover::after { transform: scaleX(1); }
-    .role-card:hover { border-color: var(--blue); box-shadow: 0 12px 32px rgba(26,75,255,0.2); transform: translateY(-4px); }
-    .role-card:hover .role-card-icon { color: var(--blue); transform: scale(1.08); }
+    .role-card:hover { border-color: var(--blue); box-shadow: 0 16px 40px rgba(26,75,255,0.3); transform: translateY(-6px) scale(1.015); }
+    .role-card:hover .role-card-icon { color: var(--blue); transform: scale(1.18) rotate(-4deg); }
+    .role-card:hover .role-card-name { color: var(--blue); }
     .role-card-icon { width: 30px; height: 30px; color: var(--sky); transition: color 0.2s, transform 0.2s; }
     .role-card-top { display: flex; align-items: center; justify-content: space-between; }
     .role-card-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--dim); }
-    .role-card-name { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--title); line-height: 1.2; }
+    .role-card-name { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--title); line-height: 1.2; transition: color 0.2s; }
     .role-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
     .role-card-mode { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; width: fit-content; }
     .role-card-mode.onsite { border: 1px solid rgba(26,75,255,0.2); color: var(--blue); background: var(--blue-s); }
@@ -328,8 +330,7 @@
     @media (max-width: 640px) { .roles-grid { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://loan-jobs.vercel.app/#org", "name": "Loan", "url": "https://loan-jobs.vercel.app/", "logo": "https://loan26112009-sudo.github.io/Loan-jobs/avatar.jpg", "sameAs": ["https://www.youtube.com/@Loan_ltz", "https://www.instagram.com/loan_yt", "https://www.tiktok.com/@repost_loan"]}, {"@type": "JobPosting", "title": "Monteur(se) vidéo YouTube", "description": "Monteur(se) pour vidéos d'infiltration et de défis filmés caméra cachée : niveau de rétention 10x supérieur attendu, tension narrative jusqu'à la révélation. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Monteur(se) de Shorts YouTube", "description": "Monteur(se) de Shorts YouTube format petits défis simples (style Ryan Trahan, MaximeClick), optimisés pour la meilleure rétention possible. Objectif 200 000 vues minimum par Short. Pack de 5 Shorts par mois, travail à distance.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Sound Designer vidéo YouTube", "description": "Sound design pour vidéos d'infiltration et de pièges filmés : tension et malaise à chaque seconde, montée de stress jusqu'à la révélation. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Auteur(e) / Scénariste voix-off", "description": "Écriture du pitch des coups montés et de la voix-off : accroche, mise en scène du piège, révélation finale. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Cadreur(se) vidéo (Paris)", "description": "Cadreur(se) caméra cachée ou discrète sur des tournages d'infiltration à Paris / Île-de-France, capable de rester calme sous pression sans se faire griller. Sur place, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Paris", "addressRegion": "Île-de-France", "addressCountry": "FR"}}}, {"@type": "JobPosting", "title": "Stratège de contenu YouTube", "description": "Recherche de concepts d'infiltration, de pièges et de défis à fort potentiel (Google Trends, VidIQ, TubeBuddy, analyse concurrentielle) pour la chaîne YouTube. Travail à distance, rémunéré si le sujet est retenu et réalisé.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}]}
-</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://loan-jobs.vercel.app/#org", "name": "Loan", "alternateName": "Loan_ltz", "url": "https://loan-jobs.vercel.app/", "logo": "https://loan26112009-sudo.github.io/Loan-jobs/avatar.jpg", "sameAs": ["https://www.youtube.com/@Loan_ltz", "https://www.instagram.com/loan_yt", "https://www.tiktok.com/@loan_yt", "https://x.com/Loan_ltz"]}, {"@type": "JobPosting", "title": "Monteur(se) vidéo YouTube", "description": "Monteur(se) pour vidéos d'infiltration et de défis filmés caméra cachée : niveau de rétention 10x supérieur attendu, tension narrative jusqu'à la révélation. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Monteur(se) de Shorts YouTube", "description": "Monteur(se) de Shorts YouTube format petits défis simples (style Ryan Trahan, MaximeClick), optimisés pour la meilleure rétention possible. Objectif 200 000 vues minimum par Short. Pack de 5 Shorts par mois, travail à distance.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Sound Designer vidéo YouTube", "description": "Sound design pour vidéos d'infiltration et de pièges filmés : tension et malaise à chaque seconde, montée de stress jusqu'à la révélation. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Auteur(e) / Scénariste voix-off", "description": "Écriture du pitch des coups montés et de la voix-off : accroche, mise en scène du piège, révélation finale. Travail à distance, rémunération selon projet.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}, {"@type": "JobPosting", "title": "Stratège de contenu YouTube", "description": "Recherche de concepts d'infiltration, de pièges et de défis à fort potentiel (Google Trends, VidIQ, TubeBuddy, analyse concurrentielle) pour la chaîne YouTube. Travail à distance, rémunéré si le sujet est retenu et réalisé.", "datePosted": "2026-11-16", "validThrough": "2027-05-16", "employmentType": "CONTRACTOR", "hiringOrganization": {"@id": "https://loan-jobs.vercel.app/#org"}, "directApply": true, "url": "https://forms.gle/iyLw5xiMVPycjYof7", "jobLocationType": "TELECOMMUTE", "applicantLocationRequirements": {"@type": "Country", "name": "France"}}]}</script>
 </head>
 <body>
 
@@ -343,8 +344,11 @@
         <a href="https://www.instagram.com/loan_yt" target="_blank" rel="noopener noreferrer" class="nav-social" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@repost_loan" target="_blank" rel="noopener noreferrer" class="nav-social" aria-label="TikTok">
+        <a href="https://www.tiktok.com/@loan_yt" target="_blank" rel="noopener noreferrer" class="nav-social" aria-label="TikTok">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/></svg>
+        </a>
+        <a href="https://x.com/Loan_ltz" target="_blank" rel="noopener noreferrer" class="nav-social" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
     </div>
@@ -364,6 +368,7 @@
   <section class="hero hero--compact">
     <div class="hero-inner hero-inner--compact">
       <div class="hero-text">
+        <img src="https://loan26112009-sudo.github.io/Loan-jobs/avatar.jpg" alt="Loan" class="hero-avatar-mini" draggable="false" oncontextmenu="return false" />
         <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="hero-badge">Offres ouvertes — 2026</span></div>
         <h1 class="hero-title" data-i18n="hero-title">Site de jobs.<br>Postule pour <em>travailler avec Loan.</em></h1>
         <p class="hero-sub" data-i18n="hero-sub">Je monte des coups filmés caméra cachée sur YouTube depuis Paris — faux resto 5 étoiles, infiltration d'hôtel, fausse identité de voyant. Je cherche des gens qui kiffent embarquer dans ces délires avec moi.</p>
@@ -379,7 +384,7 @@
   <section class="jobs-section" id="postes">
     <div class="section-header reveal">
       <div><h2 class="section-title" data-i18n="jobs-title">Postes ouverts</h2><p class="section-sub" data-i18n="jobs-sub">Clique sur un rôle pour voir les attentes en détail.</p></div>
-      <span class="section-count" data-i18n="jobs-count">6 rôles + le tien</span>
+      <span class="section-count" data-i18n="jobs-count">5 rôles + le tien</span>
     </div>
     <div class="roles-grid reveal">
       <div class="role-card" onclick="openOverlay('ov-montage')">
@@ -402,13 +407,8 @@
         <span class="role-card-name" data-i18n="role-auteur">Auteur(e)</span>
         <div class="role-card-footer"><span class="role-card-mode remote" data-i18n="mode-remote">Remote</span><span class="role-card-cta"><span data-i18n="view-role">Voir le poste</span><svg class="role-card-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M8 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       </div>
-      <div class="role-card" onclick="openOverlay('ov-cadreur')">
-        <div class="role-card-top"><span class="role-card-num">05</span><svg class="role-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-        <span class="role-card-name" data-i18n="role-cadreur">Cadreur(se)</span>
-        <div class="role-card-footer"><span class="role-card-mode onsite" data-i18n="mode-onsite">Sur place</span><span class="role-card-cta"><span data-i18n="view-role">Voir le poste</span><svg class="role-card-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M8 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      </div>
       <div class="role-card" onclick="openOverlay('ov-sujet')">
-        <div class="role-card-top"><span class="role-card-num">06</span><svg class="role-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="role-card-top"><span class="role-card-num">05</span><svg class="role-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <span class="role-card-name" data-i18n="role-sujet">Stratège de contenu</span>
         <div class="role-card-footer"><span class="role-card-mode remote" data-i18n="mode-remote">Remote</span><span class="role-card-cta"><span data-i18n="view-role">Voir le poste</span><svg class="role-card-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M8 5h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       </div>
@@ -427,8 +427,7 @@
       <div class="overlay-nav-item" data-target="ov-short" onclick="switchOverlayPanel('ov-short',this)"><span class="overlay-nav-num">02</span><span data-i18n="navitem-short">Monteur Short</span></div>
       <div class="overlay-nav-item" data-target="ov-sound" onclick="switchOverlayPanel('ov-sound',this)"><span class="overlay-nav-num">03</span><span data-i18n="role-sound">Sound Designer</span></div>
       <div class="overlay-nav-item" data-target="ov-auteur" onclick="switchOverlayPanel('ov-auteur',this)"><span class="overlay-nav-num">04</span><span data-i18n="role-auteur">Auteur(e)</span></div>
-      <div class="overlay-nav-item" data-target="ov-cadreur" onclick="switchOverlayPanel('ov-cadreur',this)"><span class="overlay-nav-num">05</span><span data-i18n="role-cadreur">Cadreur(se)</span></div>
-      <div class="overlay-nav-item" data-target="ov-sujet" onclick="switchOverlayPanel('ov-sujet',this)"><span class="overlay-nav-num">06</span><span data-i18n="role-sujet">Stratège de contenu</span></div>
+      <div class="overlay-nav-item" data-target="ov-sujet" onclick="switchOverlayPanel('ov-sujet',this)"><span class="overlay-nav-num">05</span><span data-i18n="role-sujet">Stratège de contenu</span></div>
       <div class="overlay-nav-item" data-target="ov-autre" onclick="switchOverlayPanel('ov-autre',this)"><span class="overlay-nav-num">✦</span><span data-i18n="role-other">Ton rôle n'est pas là ?</span></div>
     </div>
     <div class="overlay-content">
@@ -438,13 +437,13 @@
         <h2 class="overlay-title" data-i18n="role-montage">Monteur(se)</h2>
         <p class="overlay-desc" data-i18n="ov-montage-desc">Le montage, c'est ce qui fait qu'on reste ou qu'on décroche — surtout sur un format où on infiltre, on piège, et où on attend LE moment où ça part en vrille. Je cherche pas quelqu'un d'hyper fort, juste quelqu'un capable de vraiment me faire gagner du temps : tu touches pas à mes vidéos longues, mais à des vidéos secondaires ou certaines parties à côté. Faut quand même un bon niveau, parce qu'il est hors de question que ce soit nul.</p>
         <div class="overlay-video-ref">
-          <span class="overlay-ref-label" data-i18n="ov-montage-reflabel">Mon montage actuel → attente : 10x ce niveau</span>
-          <a class="overlay-video-embed" href="https://youtu.be/T9yfijVOCpw" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.youtube.com/vi/T9yfijVOCpw/maxresdefault.jpg" alt="Miniature vidéo Loan" onerror="this.src='https://img.youtube.com/vi/T9yfijVOCpw/hqdefault.jpg'"/>
+          <span class="overlay-ref-label" data-i18n="ov-montage-reflabel">Le style de montage que je veux</span>
+          <a class="overlay-video-embed" href="https://youtu.be/iYZ77j7v4GM" target="_blank" rel="noopener noreferrer">
+            <img src="https://img.youtube.com/vi/iYZ77j7v4GM/maxresdefault.jpg" alt="Référence de montage" onerror="this.src='https://img.youtube.com/vi/iYZ77j7v4GM/hqdefault.jpg'"/>
             <div class="overlay-embed-play">
               <div class="overlay-embed-play-btn"><svg viewBox="0 0 24 24" fill="#1a1a2e"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
-            <span class="overlay-embed-source">YouTube · @Loan_ltz</span>
+            <span class="overlay-embed-source">YouTube</span>
           </a>
         </div>
         <div class="overlay-cta-row"><span class="overlay-price" data-i18n="price-project">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer"><span data-i18n="postuler">Postuler</span> <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
@@ -482,17 +481,7 @@
       <!-- 04 SOUND DESIGNER -->
       <div class="overlay-panel" id="ov-sound">
         <h2 class="overlay-title" data-i18n="role-sound">Sound <em>Designer</em></h2>
-        <p class="overlay-desc" data-i18n="ov-sound-desc">Je veux qu'on <em>ressente</em> physiquement la tension et le malaise de chaque infiltration. Des SFX à chaque seconde, une montée de stress qui monte jusqu'à la révélation, chaque plan a sa couche sonore. Le son doit faire croire qu'on y est vraiment, caché avec moi.</p>
-        <div class="overlay-video-ref">
-          <span class="overlay-ref-label" data-i18n="ov-sound-reflabel">Niveau attendu — Mack</span>
-          <a class="overlay-video-embed" href="https://youtu.be/hh3JCjOHG_E?si=NzmNHXLiTAt7iIkz" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.youtube.com/vi/hh3JCjOHG_E/maxresdefault.jpg" alt="Miniature Mack" onerror="this.src='https://img.youtube.com/vi/hh3JCjOHG_E/hqdefault.jpg'"/>
-            <div class="overlay-embed-play">
-              <div class="overlay-embed-play-btn"><svg viewBox="0 0 24 24" fill="#1a1a2e"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            <span class="overlay-embed-source">YouTube · Mack</span>
-          </a>
-        </div>
+        <p class="overlay-desc" data-i18n="ov-sound-desc">Je veux qu'on <em>ressente</em> physiquement la tension et le malaise de chaque infiltration. Des SFX à chaque seconde, une montée de stress qui monte jusqu'à la révélation, chaque plan a sa couche sonore. Le son doit faire croire qu'on y est vraiment, caché avec moi. <strong>Niveau attendu : vise exactement ce que je fais sur mes vidéos.</strong></p>
         <div class="overlay-cta-row"><span class="overlay-price" data-i18n="price-project">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer"><span data-i18n="postuler">Postuler</span> <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
         <p class="postuler-hint" data-i18n="postuler-hint">👉 Clique sur <strong>Postuler</strong> et remplis le formulaire — tu trouveras un lien Discord à la fin pour rejoindre la communauté, tout y sera centralisé.</p>
       </div>
@@ -505,15 +494,7 @@
         <p class="postuler-hint" data-i18n="postuler-hint">👉 Clique sur <strong>Postuler</strong> et remplis le formulaire — tu trouveras un lien Discord à la fin pour rejoindre la communauté, tout y sera centralisé.</p>
       </div>
 
-      <!-- 07 CADREUR -->
-      <div class="overlay-panel" id="ov-cadreur">
-        <h2 class="overlay-title" data-i18n="role-cadreur"><em>Cadreur(se)</em></h2>
-        <p class="overlay-desc" data-i18n="ov-cadreur-desc">Tu filmes sur le terrain, souvent en caméra cachée ou discrète, pendant qu'on infiltre un lieu ou qu'on monte un coup. Pas juste filmer — capter la réaction, l'instant où ça bascule, sans se faire griller. Tu anticipes l'action sans qu'on te le dise et tu restes calme sous pression. Tu maîtrises la lumière disponible et le matériel discret (micro-caméra, GoPro planquée, etc.).</p>
-        <div class="overlay-cta-row"><span class="overlay-price" data-i18n="price-project">Rémunération selon projet</span><a class="overlay-btn" href="https://forms.gle/iyLw5xiMVPycjYof7" target="_blank" rel="noopener noreferrer"><span data-i18n="postuler">Postuler</span> <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <p class="postuler-hint" data-i18n="postuler-hint">👉 Clique sur <strong>Postuler</strong> et remplis le formulaire — tu trouveras un lien Discord à la fin pour rejoindre la communauté, tout y sera centralisé.</p>
-      </div>
-
-      <!-- 08 TROUVEUR DE SUJETS -->
+      <!-- 05 STRATÈGE DE CONTENU -->
       <div class="overlay-panel" id="ov-sujet">
         <h2 class="overlay-title" data-i18n="ov-sujet-title">Stratège <em>de contenu</em></h2>
         <p class="overlay-desc" data-i18n="ov-sujet-desc1">Tu trouves les prochains coups à monter : infiltrations, pièges, fausses identités, défis d'endurance. Ce n'est pas "avoir des idées au hasard" — c'est un vrai travail d'analyse : outils comme <strong>Google Trends</strong>, <strong>VidIQ / TubeBuddy</strong>, étude des vidéos concurrentes (rétention, CTR, volume de recherche) pour <strong>appuyer chaque proposition avec des données</strong>, pas des suppositions.</p>
@@ -627,7 +608,7 @@
       'hero-btn-secondary': 'Email me directly',
       'jobs-title': 'Open roles',
       'jobs-sub': 'Click a role to see the full expectations.',
-      'jobs-count': '6 roles + yours',
+      'jobs-count': '5 roles + yours',
       'view-role': 'View role',
       'role-other': "Don't see your role?",
       'mode-other': 'Any pitch',
@@ -635,13 +616,11 @@
       'role-short': 'Short-form Editor',
       'role-sound': 'Sound Designer',
       'role-auteur': 'Writer',
-      'role-cadreur': 'Camera Operator',
       'role-sujet': 'Content Strategist',
       'navitem-short': 'Short Editor',
       'mode-remote': 'Remote',
-      'mode-onsite': 'On-site',
       'ov-montage-desc': "Editing is what makes people stay or click away — especially on a format where we infiltrate, pull off a stunt, and wait for THE moment it all goes sideways. I'm not looking for someone super elite, just someone who can actually save me time: you won't touch my main long videos, but secondary videos or certain parts alongside them. Still needs a solid skill level, because it's not allowed to look bad.",
-      'ov-montage-reflabel': 'My current editing → expectation: 10x this level',
+      'ov-montage-reflabel': 'The editing style I want',
       'price-project': 'Pay depends on project',
       'ov-short-title': 'Short-form <em>Editor</em>',
       'ov-short-desc1': "I want <strong>simple little challenges</strong> Shorts, in the spirit of Ryan Trahan or MaximeClick — a concept you get in 2 seconds, that just works. Priority number one: the <strong>best retention possible</strong>.",
@@ -653,10 +632,8 @@
       'ov-short-inspotext': "Think <strong>simple little challenges</strong>, in the spirit of what Ryan Trahan or MaximeClick do — a concept you get in 2 seconds that makes people want to see what happens next. Once I have specific examples to show you, I'll add them here.",
       'ov-short-price': 'Package of 5 Shorts / month — propose your rate',
       'ov-short-reassure': "One clarification: no need for crazy effects or pro gear. A well-paced, simple, funny Short is more than enough for strong retention — format and timing matter more than technique.",
-      'ov-sound-desc': "I want people to physically <em>feel</em> the tension and unease of every infiltration. SFX on every second, stress building up to the reveal, every shot has its own sound layer. The sound has to make people believe they're really there, hiding with me.",
-      'ov-sound-reflabel': 'Expected level — Mack',
+      'ov-sound-desc': "I want people to physically <em>feel</em> the tension and unease of every infiltration. SFX on every second, stress building up to the reveal, every shot has its own sound layer. The sound has to make people believe they're really there, hiding with me. <strong>Expected level: match exactly what I do on my own videos.</strong>",
       'ov-auteur-desc': "You build the pitch for the stunt and the voice-over that keeps viewers hooked. The title, the first-5-seconds hook, the storyline all the way to the final reveal — everything has to make people want to know how it ends. You know what makes a scheme or a prank fascinating to tell.",
-      'ov-cadreur-desc': "You film on location, often with a hidden or discreet camera, while we infiltrate a place or pull off a stunt. Not just filming — capturing the reaction, the moment it tips over, without getting caught. You anticipate the action without being told and stay calm under pressure. You're comfortable with available light and discreet gear (micro-cam, hidden GoPro, etc.).",
       'ov-sujet-desc1': 'You find the next stunts to pull off: infiltrations, pranks, fake identities, endurance challenges. This isn\'t "coming up with random ideas" — it\'s real analysis work: tools like <strong>Google Trends</strong>, <strong>VidIQ / TubeBuddy</strong>, competitor video analysis (retention, CTR, search volume) to <strong>back every pitch with data</strong>, not guesses.',
       'ov-sujet-desc2': 'The principle — <strong>Tier+</strong>: you only pitch concepts that deserve an S tier or above. Real potential for millions of views, a strong twist or reveal, something unique nobody has done yet. Paid only if the topic is selected and produced.',
       'ov-sujet-reflabel': 'Minimum concept level — Mack',
